@@ -1,0 +1,85 @@
+{
+  "columns": {
+    "date":              { "type": "string", "desc": "エントリー日付（YYYY-MM-DD）" },
+    "time":              { "type": "string", "desc": "エントリー時刻（HH:MM:SS）" },
+    "hour":              { "type": "int",    "desc": "エントリー時刻の時間帯（0-23）" },
+
+    "bid":               { "type": "float",  "desc": "エントリー時点のBID価格" },
+    "ask":               { "type": "float",  "desc": "エントリー時点のASK価格" },
+    "spread_points":     { "type": "int",    "desc": "スプレッド（ポイント）" },
+
+    "entry_mid":         { "type": "float",  "desc": "MID価格（(bid+ask)/2）" },
+    "entry_direction":   { "type": "int",    "desc": "エントリー方向（+1/-1）" },
+
+    "outcome_type":      { "type": "int",    "desc": "結果種別（0, ±1）" },
+    "outcome_time_sec":  { "type": "float",  "desc": "結果確定までの秒数" },
+
+    "direction_changes": { "type": "int",    "desc": "方向転換回数（PoC-0010では未使用）" },
+    "end_time":          { "type": "string", "desc": "Outcome確定時刻（HH:MM:SS）" },
+
+    "vol_1s":            { "type": "float",  "desc": "直近1秒の価格変動幅" },
+    "vol_5s":            { "type": "float",  "desc": "直近5秒の価格変動幅" },
+    "std_10ticks":       { "type": "float",  "desc": "直近10Tickの標準偏差" },
+
+    "slope_10ticks":     { "type": "float",  "desc": "直近10Tickの線形回帰傾き" },
+    "slope_30ticks":     { "type": "float",  "desc": "直近30Tickの線形回帰傾き" },
+
+    "tick_density_1s":   { "type": "int",    "desc": "直近1秒のTick数" },
+    "tick_density_5s":   { "type": "int",    "desc": "直近5秒のTick数" },
+
+    "m1_direction":      { "type": "int",    "desc": "M1足の方向（+1/-1）" },
+    "m5_direction":      { "type": "int",    "desc": "M5足の方向（+1/-1）" },
+
+    "bb_width_m1":       { "type": "float",  "desc": "M1ボリンジャーバンド幅" },
+    "adx_m5":            { "type": "float",  "desc": "M5 ADX(14)" },
+
+    "direction_agreement_10ticks": { "type": "float", "desc": "直近10Tickの方向一致率（0〜1）" },
+
+    "rsi_m1":            { "type": "float",  "desc": "M1 RSI(14)" },
+    "distance_to_prev_high": { "type": "float", "desc": "直近高値との距離" },
+    "distance_to_prev_low":  { "type": "float", "desc": "直近安値との距離" }
+  },
+
+  "label_columns": [
+    "outcome_type",
+    "outcome_time_sec"
+  ],
+
+  "feature_columns": [
+    "hour",
+    "spread_points",
+    "entry_mid",
+    "entry_direction",
+
+    "vol_1s",
+    "vol_5s",
+    "std_10ticks",
+
+    "slope_10ticks",
+    "slope_30ticks",
+
+    "tick_density_1s",
+    "tick_density_5s",
+
+    "m1_direction",
+    "m5_direction",
+
+    "bb_width_m1",
+    "adx_m5",
+
+    "direction_agreement_10ticks",
+
+    "rsi_m1",
+    "distance_to_prev_high",
+    "distance_to_prev_low"
+  ],
+
+  "meta_columns": [
+    "date",
+    "time",
+    "bid",
+    "ask",
+    "direction_changes",
+    "end_time"
+  ]
+}

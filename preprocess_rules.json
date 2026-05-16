@@ -1,0 +1,60 @@
+{
+  "description": "PoC-0010 の特徴量付き CSV を集計し、到達時間・到達タイプ分析の基礎統計を生成するためのルール",
+
+  "summaries": {
+
+    "basic_stats": {
+      "samples": true,
+      "outcome_type_counts": { "group_by": "outcome_type" }
+    },
+
+    "time_distribution": {
+      "columns": ["outcome_time_sec"],
+      "group_by": "outcome_type",
+      "quantiles": [0.25, 0.5, 0.75]
+    },
+
+    "hourly_stats": {
+      "columns": ["outcome_type"],
+      "group_by": "hour"
+    },
+
+    "spread_binned_stats": {
+      "columns": ["spread_points"],
+      "bins": 5,
+      "group_by": "outcome_type"
+    },
+
+    "direction_relation": {
+      "columns": ["outcome_type"],
+      "group_by": "entry_direction"
+    },
+
+    "feature_correlations": {
+      "columns": [
+        "vol_1s", "vol_5s", "std_10ticks",
+        "slope_10ticks", "slope_30ticks",
+        "tick_density_1s", "tick_density_5s",
+        "m1_direction", "m5_direction",
+        "bb_width_m1", "adx_m5",
+        "direction_agreement_10ticks",
+        "rsi_m1", "distance_to_prev_high", "distance_to_prev_low"
+      ],
+      "target": "outcome_time_sec",
+      "method": "pearson"
+    },
+
+    "feature_distributions_by_outcome": {
+      "columns": [
+        "vol_1s", "vol_5s", "std_10ticks",
+        "slope_10ticks", "slope_30ticks",
+        "tick_density_1s", "tick_density_5s",
+        "m1_direction", "m5_direction",
+        "bb_width_m1", "adx_m5",
+        "direction_agreement_10ticks",
+        "rsi_m1", "distance_to_prev_high", "distance_to_prev_low"
+      ],
+      "group_by": "outcome_type"
+    }
+  }
+}
